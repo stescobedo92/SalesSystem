@@ -30,7 +30,7 @@
         {
             tabControlMain = new TabControl();
             tabListCategories = new TabPage();
-            dataGridView1 = new DataGridView();
+            dgvCategory = new DataGridView();
             btnSearch = new Button();
             txbSearch = new TextBox();
             btnNew = new Button();
@@ -53,7 +53,7 @@
             label4 = new Label();
             tabControlMain.SuspendLayout();
             tabListCategories.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCategory).BeginInit();
             tabNewCategory.SuspendLayout();
             tabUpdateCategory.SuspendLayout();
             SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // tabListCategories
             // 
-            tabListCategories.Controls.Add(dataGridView1);
+            tabListCategories.Controls.Add(dgvCategory);
             tabListCategories.Controls.Add(btnSearch);
             tabListCategories.Controls.Add(txbSearch);
             tabListCategories.Controls.Add(btnNew);
@@ -85,13 +85,13 @@
             tabListCategories.Text = "List";
             tabListCategories.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvCategory
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 42);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(711, 268);
-            dataGridView1.TabIndex = 3;
+            dgvCategory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategory.Location = new Point(14, 42);
+            dgvCategory.Name = "dgvCategory";
+            dgvCategory.Size = new Size(711, 268);
+            dgvCategory.TabIndex = 3;
             // 
             // btnSearch
             // 
@@ -310,10 +310,11 @@
             Name = "frmCatgory";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "New";
+            Load += frmCatgory_Load;
             tabControlMain.ResumeLayout(false);
             tabListCategories.ResumeLayout(false);
             tabListCategories.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCategory).EndInit();
             tabNewCategory.ResumeLayout(false);
             tabNewCategory.PerformLayout();
             tabUpdateCategory.ResumeLayout(false);
@@ -332,7 +333,7 @@
         private Button btnSearch;
         private TextBox txbSearch;
         private Button btnNew;
-        private DataGridView dataGridView1;
+        private DataGridView dgvCategory;
         private ComboBox cmbMeasurement;
         private Label lbMeasurement;
         private TextBox txbCategoryName;

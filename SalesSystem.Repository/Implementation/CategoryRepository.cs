@@ -27,13 +27,13 @@ public class CategoryRepository : ICategory
         {
             categories.Add(new Category()
             {
-                CategoryId = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Active = reader.GetBoolean(2),
+                CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                Name = reader["Name"]?.ToString() ?? string.Empty,
+                Active = Convert.ToBoolean(reader["Active"]),
                 MeasurementReference = new Measurement()
                 {
-                    MeasurementId = reader.GetInt32(3),
-                    Name = reader.GetString(4)
+                    MeasurementId = Convert.ToInt32(reader["MeasurementId"]),
+                    Name = reader["MeasurementName"]?.ToString() ?? string.Empty
                 }
             });
         }
