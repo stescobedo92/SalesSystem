@@ -18,7 +18,7 @@ public class CategoryRepository : ICategory
 
         await using SqlConnection connection = _connection.GetConnection();
         await connection.OpenAsync();
-        await using SqlCommand command = new SqlCommand("sp_listCategory");
+        await using SqlCommand command = new SqlCommand("sp_listCategory", connection);
         command.Parameters.AddWithValue("@Search", search);
         command.CommandType = CommandType.StoredProcedure;
         await using SqlDataReader reader = await command.ExecuteReaderAsync();
@@ -47,7 +47,7 @@ public class CategoryRepository : ICategory
 
         await using SqlConnection connection = _connection.GetConnection();
         await connection.OpenAsync();
-        await using SqlCommand command = new SqlCommand("sp_createCategory");
+        await using SqlCommand command = new SqlCommand("sp_createCategory", connection);
         command.Parameters.AddWithValue("@Name", category.Name);
         command.Parameters.AddWithValue("@MeasurementId", category.MeasurementReference.MeasurementId);
         command.Parameters.Add("@ErrorMessage", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
@@ -72,7 +72,7 @@ public class CategoryRepository : ICategory
 
         await using SqlConnection connection = _connection.GetConnection();
         await connection.OpenAsync();
-        await using SqlCommand command = new SqlCommand("sp_createCategory");
+        await using SqlCommand command = new SqlCommand("sp_createCategory", connection);
         command.Parameters.AddWithValue("@CategoryId", category.CategoryId);
         command.Parameters.AddWithValue("@Name", category.Name);
         command.Parameters.AddWithValue("@MeasurementId", category.MeasurementReference.MeasurementId);

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SalesSystem.Repository;
 using SalesSystem.Services;
@@ -15,8 +16,8 @@ namespace SalesSystem.GUI
         {
             ApplicationConfiguration.Initialize();
             var host = CreateHostBuilder().Build();
-
-            Application.Run(new Form1());
+            var formService = host.Services.GetRequiredService<Form1>();
+            Application.Run(formService);
         }
 
         static IHostBuilder CreateHostBuilder() => Host.CreateDefaultBuilder().ConfigureAppConfiguration(
@@ -28,6 +29,8 @@ namespace SalesSystem.GUI
             {
                 services.RegisterRepositoryDependencies();
                 services.RegisterServicesDependencies();
+
+                services.AddTransient<Form1>();
             });
     }
 }

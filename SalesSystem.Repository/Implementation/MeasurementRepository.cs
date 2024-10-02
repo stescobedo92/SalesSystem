@@ -18,7 +18,7 @@ public class MeasurementRepository : IMeasurement
 
         await using SqlConnection connection = _connection.GetConnection();
         await connection.OpenAsync();
-        await using SqlCommand command = new SqlCommand("sp_listMeasurement");
+        await using SqlCommand command = new SqlCommand("sp_listMeasurement", connection);
         command.CommandType = CommandType.StoredProcedure;
         await using SqlDataReader reader = await command.ExecuteReaderAsync();
 
