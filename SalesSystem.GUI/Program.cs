@@ -1,5 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using SalesSystem.Repository;
+using SalesSystem.Services;
 
 namespace SalesSystem.GUI
 {
@@ -21,6 +23,11 @@ namespace SalesSystem.GUI
             (context, config) =>
             {
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            })
+            .ConfigureServices((context, services) =>
+            {
+                services.RegisterRepositoryDependencies();
+                services.RegisterServicesDependencies();
             });
     }
 }
