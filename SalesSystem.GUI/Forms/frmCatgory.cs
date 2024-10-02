@@ -18,6 +18,45 @@ public partial class frmCatgory : Form
     private async void frmCatgory_Load(object sender, EventArgs e)
     {
         await ShowCategories(dgvCategory, string.Empty);
+
+        var btnUpdateCategories = new DataGridViewButtonColumn()
+        {
+            Text = "Update",
+            Name = "btnUpdateCategories",
+            HeaderText = string.Empty,
+            UseColumnTextForButtonValue = true,
+            Width = 50,
+            AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        };
+
+        dgvCategory.Columns.Add(btnUpdateCategories);
+
+        dgvCategory.AllowUserToAddRows = false;
+        dgvCategory.AllowUserToDeleteRows = false;
+        dgvCategory.AllowUserToResizeColumns = false;
+        dgvCategory.AllowUserToResizeRows = false;
+        dgvCategory.AllowUserToOrderColumns = false;
+        dgvCategory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+        dgvCategory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvCategory.MultiSelect = false;
+        dgvCategory.RowHeadersVisible = false;
+        dgvCategory.ReadOnly = true;
+        dgvCategory.BackgroundColor = Color.White;
+        dgvCategory.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle()
+        {
+            BackColor = Color.FromArgb(58, 49, 69),
+            SelectionBackColor = Color.FromArgb(58, 49, 69),
+            ForeColor = Color.FromArgb(255, 255, 255),
+        };
+        dgvCategory.DefaultCellStyle = new DataGridViewCellStyle()
+        {
+            SelectionBackColor = Color.FromArgb(191, 176, 209),
+            SelectionForeColor = Color.FromArgb(0, 0, 0)
+        };
+        dgvCategory.ColumnHeadersHeight = 30;
+        dgvCategory.EnableHeadersVisualStyles = false;
+        dgvCategory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+        dgvCategory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
     }
 
     private async Task ShowCategories(DataGridView dgCategory, string search)
