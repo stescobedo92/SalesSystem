@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SalesSystem.GUI.Forms;
 using SalesSystem.Repository;
 using SalesSystem.Services;
 
@@ -16,7 +17,7 @@ namespace SalesSystem.GUI
         {
             ApplicationConfiguration.Initialize();
             var host = CreateHostBuilder().Build();
-            var formService = host.Services.GetRequiredService<Form1>();
+            var formService = host.Services.GetRequiredService<frmCatgory>();
             Application.Run(formService);
         }
 
@@ -30,7 +31,8 @@ namespace SalesSystem.GUI
                 services.RegisterRepositoryDependencies();
                 services.RegisterServicesDependencies();
 
-                services.AddTransient<Form1>();
+                //services.AddTransient<Form1>();
+                services.AddSingleton<frmCatgory>();
             });
     }
 }
